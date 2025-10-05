@@ -1,6 +1,12 @@
 pandas
 numpy
+seaborn
+matplotlib
+statsmodels
 scikit-learn
+lightgbm
+xgboost
+optuna
 mlflow
 fastapi
 uvicorn
