@@ -9,6 +9,7 @@ xgboost
 optuna
 mlflow
 fastapi
+gradio
 uvicorn
 pydantic
 python-dotenv
