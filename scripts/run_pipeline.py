@@ -39,8 +39,10 @@ def main(args):
     
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-    mlruns_path = args.mlflow_uri or os.path.join(project_root, "mlruns")  # Local file-based tracking
-    mlflow.set_tracking_uri(mlruns_path)
+    mlruns_path = args.mlflow_uri or os.path.join(project_root, "mlruns")
+
+    # IMPORTANT: Convert Windows path to file URI
+    mlflow.set_tracking_uri(f"file:///{mlruns_path.replace(os.sep, '/')}")
     mlflow.set_experiment(args.experiment)  # Creates experiment if doesn't exist
 
     # Start MLflow run - all subsequent logging will be tracked under this run
@@ -235,5 +237,5 @@ if __name__ == "__main__":
     main(args)
 
 # Run command:
-# python tests/run_pipeline.py --input data/raw/Telco-Customer-Churn.csv --target Churn
+# python scripts/run_pipeline.py --input data/raw/Telco-Customer-Churn.csv --target Churn
 
