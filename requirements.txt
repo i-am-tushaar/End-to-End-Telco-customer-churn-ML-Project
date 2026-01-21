@@ -7,7 +7,7 @@ scikit-learn
 lightgbm
 xgboost
 optuna
-mlflow
+mlflow==2.2.2
 fastapi
 gradio
 uvicorn

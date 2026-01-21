@@ -17,12 +17,14 @@ COPY . .
 
 # Explicitly copy model (in case .dockerignore excluded mlruns)
 # NOTE: destination changed to /app/src/serving/model to match inference.py's path
+# Copy serving code
 COPY src/serving/model /app/src/serving/model
 
-# Copy MLflow run (artifacts + metadata) to the flat /app/model convenience path
-COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/model /app/model
-COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/feature_columns.txt /app/model/feature_columns.txt
-COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/preprocessing.pkl /app/model/preprocessing.pkl
+# Copy BEST model (flat path for inference)
+COPY src/serving/model/best/model.pkl /app/model/model.pkl
+COPY src/serving/model/best/feature_columns.txt /app/model/feature_columns.txt
+COPY src/serving/model/best/preprocessing.pkl /app/model/preprocessing.pkl
+
 
 # make "serving" and "app" importable without the "src." prefix
 # ensures logs are shown in real-time (no buffering).

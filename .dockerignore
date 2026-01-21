@@ -1,0 +1,11 @@
+# Directories
+data/
+notebooks/
+mlruns/
+artifacts/
+.venv/
+
+# Files / patterns
+*.log
+*.ipynb
+__pycache__
